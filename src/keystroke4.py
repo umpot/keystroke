@@ -110,13 +110,15 @@ def create_balansed_data_set(genuine_samples_num):
     for k in keys:
         print k
         genuine = list(df[df[subject] == k][array])
-        genuine_samples = [genuine[sz + j] for j in range(genuine_samples_num)]
-        for j in range(sz - 1):
-            m['a'].append(genuine[j])
+        genuine_samples = genuine[:genuine_samples_num]
+
+        for g in genuine[genuine_samples_num:]:
+            m['a'].append(g)
             m['genuine_samples'].append(genuine_samples)
             m[target].append(0)
 
-        intruder = list(df[df[subject] != k].sample(sz - 1)[array])
+        othe_than_genuine_samples_num = len(genuine)-genuine_samples_num
+        intruder = list(df[df[subject] != k].sample()[array])
 
         for a in intruder:
             m['a'].append(a)
