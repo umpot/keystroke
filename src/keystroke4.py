@@ -117,8 +117,8 @@ def create_balansed_data_set(genuine_samples_num):
             m['genuine_samples'].append(genuine_samples)
             m[target].append(0)
 
-        othe_than_genuine_samples_num = len(genuine)-genuine_samples_num
-        intruder = list(df[df[subject] != k].sample()[array])
+        other_than_genuine_samples_num = len(genuine)-genuine_samples_num
+        intruder = list(df[df[subject] != k].sample(other_than_genuine_samples_num)[array])
 
         for a in intruder:
             m['a'].append(a)
